@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>show</title>
+
+{% endblock %}
+{% block content %}
+            <table class="table table-primary table-hover">
+                    <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Students</th>
+                                <th>Fess</th>
+                                <th colspan="2" class="text-center">Action</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for sub in subjects %}
+                            <tr>
+                                <td>{{ sub.sub_id }}</td>
+                                <td>{{ sub.subject_name }}</td>
+                                <td>{{ sub.subject_teacher }}</td>
+                                <td>{{ sub.total_students }}</td>
+                                <td>{{ sub.subject_fee}}</td>
+                                <td>
+                                    <a href="{% url 'update_url' sub.id %}">
+                                        <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>&nbsp Update</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_url' sub.id  %}">
+                                        <button class="btn btn-warning"><i class="bi bi-trash"></i>&nbsp Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+
+{% endblock %}
